@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Tailwind Project</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"/>
+  <link href="output.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+</head>
+<body class= "bg-gradient-to-br from-purple-900 via-purple-500 to-pink-600 h-max">
+  <nav class="p-6 flex bg-purple-950 justify-between items-center">
+    <a href="#" class="flex gap-2 items-center">
+      <img src="assets/movix-high-resolution-logo-transparent.png" alt="Logo" class="object-cover invert" style="height: 44px; width: 160px;">
+    </a>
+    <div id="searchbar" class="relative flex items-center">
+      <input type="text" placeholder="Search" class="flex-1 px-4 py-2 border border-gray-300 rounded-l-md focus:outline-none focus:border-yellow-300 w-96">
+      <button type="submit" class="absolute inset-y-0 -right-12 px-4 bg-gray-300 border border-gray-300 rounded-r-md flex items-center justify-center hover:bg-gray-400 transition duration-300">
+        <i class="fas fa-search text-gray-600"></i>
+      </button>
+    </div>
+    <div id="navmenu" class="flex">
+      <a href="#" class="hidden md:flex m-4 font-medium text-xl text-white px-2 py-1 hover:scale-110 transition-transform duration-300 transform">Watchlist</a>
+      <a href="#" class="hidden md:flex m-4 font-medium text-xl text-white px-2 py-1 hover:scale-110 transition-transform duration-300 transform">Login</a>
+      <!-- <a href="#" class="hidden md:flex m-4 font-medium text-xl text-white hover:border-2 border-transparent rounded px-2 py-1 hover:border-purple-400 hover:bg-purple-400 hover:scale-110 transition-transform duration-300 transform">Login</a> -->
+      <button class=" px-2 py-1 text-xl invert hover:scale-110 transition-transform duration-300 transform" onclick="handleMenu()">
+        <i class="fa-solid fa-bars text-white"></i>
+      </button>
+    </div>
+  </nav>
+  <div id="text" class="text-2xl mx-20 font-bold text-white my-14 w-100">
+    <p></p>
+  </div>
+  <div class="" id="font">
+    <div>
+      <h1 class="text-5xl mx-16 font-bold text-white my-10">All time Top-Rated</h1>
+    </div>
+    <div>
+      <h1 class="text-3xl mx-20 font-bold text-white my-14">Movies</h1>
+    </div>
+  </div>
+  <main class="flex mx-16 flex-wrap" id="one">
+  </main>
+    
+  <div class="" id="font3">
+    <div>
+      <h1 class="text-5xl mx-16 font-bold text-white my-10">Now Playing</h1>
+    </div>
+    <div>
+      <h1 class="text-3xl mx-20 font-bold text-white my-14">Movies</h1>
+    </div>
+    <main class="flex mx-16 flex-wrap" id="three">
+    </main>
+  </div>
+  <div class="" id="font2">
+    <div>
+      <h1 class="text-5xl mx-16 font-bold text-white my-10">Upcoming Releases</h1>
+    </div>
+    <div>
+      <h1 class="text-3xl mx-20 font-bold text-white my-14">Movies</h1>
+    </div>
+    <main class="flex mx-16 flex-wrap" id="two">
+    </main>
+  </div>
+  <footer class="flex justify-center mx-auto mb-6 mt-16 text-purple-950 font-sans text-base">
+    <h1 class="">@Copyright 2024 All Rights Reserved Subrata</h1>
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>
+
+
