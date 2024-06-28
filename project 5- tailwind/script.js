@@ -44,7 +44,7 @@ async function moviedata(context, container) {
       </div>
       <button class="flex mx-auto mt-2 border-0 w-max pt-2 pb-0.5 px-3 mb-2 rounded-lg text-white hover:bg-purple-500 transition-transform duration-300">
         <i class="fa-solid fa-play my-1.5 mr-2"></i>
-        <p class="text-lg font-semibold mb-1">Trailer</p>
+        <p class="text-lg font-semibold mb-1">Play</p>
       </button>
     `;
   
