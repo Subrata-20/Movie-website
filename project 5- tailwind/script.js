@@ -1,6 +1,3 @@
-function handleMenu() {
-  console.log('First');
-}
 
 const searchbox = document.querySelector("#searchbar input");
 const searchbtn = document.querySelector("#searchbar button");
@@ -26,10 +23,14 @@ async function moviedata(context, container) {
       const moviePoster = `https://image.tmdb.org/t/p/w500${result[i].poster_path}`;
   
       let card = document.createElement('div');
-      card.classList.add('border', 'h-max', 'shadow-md', 'bg-purple-400', 'w-52', 'rounded-md', 'mx-auto', 'my-4', 'hover:scale-105', 'transition-transform', 'duration-300', 'transform');
+      card.classList.add('show', 'border', 'h-max', 'overflow-hidden', 'shadow-md', 'bg-purple-400', 'w-52', 'rounded-md', 'mx-auto', 'my-4', 'hover:scale-105', 'transition-transform', 'duration-300', 'transform');
   
       card.innerHTML = `
       <img src="${moviePoster}" class="rounded-t-md h-80 card-img">
+      <div class="overview absolute top-0 border-1 bg-black h-80 bg-opacity-70 -translate-y-full hover:translate-y-0 transition-transform duration-700 transform">
+          <h1 class="text-gray-300 pt-3 pl-3 font-bold">Overview:</h1>
+          <p class=" text-gray-300 p-3 text-xs">${result[i].overview}</p>
+      </div>
       <div class="flex mt-2">
         <i class="fa-solid fa-star p-2 mr-0.5 text-yellow-400"></i>
         <p class="py-0.5 text-gray-600 font-bold text-lg card-rating">${result[i].vote_average}</p>
@@ -113,5 +114,16 @@ moviedata("top_rated", mainContainer)
 moviedata("now_playing", mainContent)
 moviedata("upcoming", mainCont)
 
+function handleMenu() {
+  console.log("first");
+  const menubar = document.querySelector(".menubar");
+  menubar.classList.remove("translate-x-full");
+  menubar.classList.add("-translate-x-0");
+}
 
-
+function accessMenu(){
+  console.log("back");
+  const menubar = document.querySelector(".menubar");
+  menubar.classList.remove("-translate-x-0");
+  menubar.classList.add("translate-x-full");
+}
