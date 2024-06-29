@@ -1,5 +1,3 @@
-
-
 const searchbox = document.querySelector("#searchbar input");
 const searchbtn = document.querySelector("#searchbar button");
 const watchlist = document.querySelector('#watchlist');
