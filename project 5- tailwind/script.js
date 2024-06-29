@@ -39,7 +39,7 @@ function cardisto(result, length, container) {
         </button>
       </div>
       <button class="play-btn flex mx-auto mt-2 border-0 w-max pt-2 pb-0.5 px-3 mb-2 rounded-lg text-white hover:bg-purple-500 transition-transform duration-300">
-        <i class="fa-solid fa-play my-1.5 mr-2"></i>
+        <i class="fa-solid fa-play my-1.5 mr-2" id="bookmark"></i>
         <p class="text-lg font-semibold mb-1">Play</p>
       </button>
     `;
@@ -47,6 +47,9 @@ function cardisto(result, length, container) {
     container.appendChild(card);
     const watchlistButton = card.querySelector('.watchlist-btn');
     const playButton = card.querySelector('.play-btn');
+    const watchlistIcon = watchlistButton.querySelector('i');
+    const modallistIcon = modallist.querySelector('i');
+
 
     function addtowatchlist() {
       console.log('Added');
@@ -66,17 +69,26 @@ function cardisto(result, length, container) {
         };
         watchlistLocal.push(watchmovie);
         localStorage.setItem('watchMoviesArray', JSON.stringify(watchlistLocal));
+        watchlistButton.classList.remove('text-blue-700');
         watchlistButton.classList.add('bg-purple-500', 'text-white');
+        watchlistIcon.classList.add('font-bold');
+        modallist.classList.remove('text-blue-700');
+        modallistIcon.classList.add('font-bold');
+        modallist.classList.add('bg-purple-500', 'text-white');
       } else {
         watchlistLocal.splice(index, 1);
         localStorage.setItem('watchMoviesArray', JSON.stringify(watchlistLocal));
         watchlistButton.classList.remove('bg-purple-500', 'text-white');
+        watchlistButton.classList.add('text-blue-700');
+        watchlistIcon.classList.remove('font-bold');
+        modallist.classList.remove('bg-purple-500', 'text-white');
+        modallistIcon.classList.remove('font-bold');
+        modallist.classList.add('text-blue-700');
       }
     }
 
     watchlistButton.addEventListener('click', addtowatchlist);
     playButton.addEventListener('click', function () {
-      console.log('Play button clicked');
       openModal(moviePoster, result[i].overview, addtowatchlist);
     });
   }
@@ -128,7 +140,7 @@ function openModal(moviePoster, moviedesc, addtowatchlist) {
   document.getElementById('modaldesc').innerText = moviedesc;
   document.getElementById('modal').classList.remove('hidden');
   document.getElementById('modal').classList.add('flex');
-  const modalWatchlistButton = document.querySelector('#modal .watchlist-btn');
+  const modalWatchlistButton = document.querySelector('#modal #watchlistmodal');
   modalWatchlistButton.onclick = addtowatchlist;
 }
 
@@ -139,6 +151,4 @@ function closeModal() {
 
 modallist.addEventListener('click', ()=>{
   addtowatchlist();
-  document.getElementById("#watchlistmodal").classList.remove('bg-purple-300')
-  document.getElementById("#watchlistmodal").classList.add('bg-purple-500')
 });
