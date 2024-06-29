@@ -23,7 +23,7 @@ function cardisto(result, length, container) {
 
     card.innerHTML = `
       <img src="${moviePoster}" class="rounded-t-md h-80 card-img">
-      <div class="overview absolute top-0 border-1 bg-black h-80 bg-opacity-70 -translate-y-full hover:translate-y-0 transition-transform duration-700 transform">
+      <div class="overview absolute top-0 border-1 bg-black h-80 bg-opacity-70 -translate-y-full hover:translate-y-0 transition-transform duration-700 transform overflow-hidden overflow-ellipsis">
           <h1 class="text-gray-300 pt-3 pl-3 font-bold">Overview:</h1>
           <p class=" text-gray-300 p-3 text-xs">${result[i].overview}</p>
       </div>
@@ -95,7 +95,7 @@ function cardisto(result, length, container) {
 }
 
 async function searchdata(search) {
-  const resp = await fetch(`https://api.themoviedb.org/3/search/movie?api_key=${apikey}&query=${search}`);
+  const resp = await fetch(`https://api.themoviedb.org/3/search/movie?api_key=4c5b0e6e762ef498e58fa64de2f01752&query=${search}`);
   const data = await resp.json();
   console.log(data);
   console.log(data.results.length);
