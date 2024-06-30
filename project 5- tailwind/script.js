@@ -100,6 +100,7 @@ function cardisto(result, length, container) {
 }
 
 async function searchdata(search) {
+  document.querySelector("#font0").style.display = "none";
   mainCon.innerHTML = '';
   let allResults = [];
   for(let i = 1; i <= 2; i++){
