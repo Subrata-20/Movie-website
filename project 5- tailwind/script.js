@@ -94,7 +94,7 @@ function cardisto(result, length, container) {
 
     watchlistButton.addEventListener('click', addtowatchlist);
     playButton.addEventListener('click', function () {
-      openModal(moviePoster, result[i].overview, addtowatchlist);
+      openModal(moviePoster, result[i].overview, result[i].title, addtowatchlist);
     });
   }
 }
@@ -181,9 +181,10 @@ function accessMenu() {
   menubar.classList.add("translate-x-full");
 }
 
-function openModal(moviePoster, moviedesc, addtowatchlist) {
+function openModal(moviePoster, moviedesc, moviename, addtowatchlist) {
   document.getElementById('modalimg').src = moviePoster;
   document.getElementById('modaldesc').innerText = moviedesc;
+  document.getElementById('namemodal').innerText = moviename;
   document.getElementById('modal').classList.remove('hidden');
   document.getElementById('modal').classList.add('flex');
   const modalWatchlistButton = document.querySelector('#modal #watchlistmodal');
