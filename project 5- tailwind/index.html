@@ -33,15 +33,25 @@
       </button>
     </div>
   </nav>
-  <div class="menubar absolute right-0 top-0 border-0 h-max w-96 bg-purple-900 flex flex-col justify-end translate-x-full transition-transform duration-700 transform">
+  <div class="menubar absolute right-0 top-0 border-0 h-max w-96 bg-purple-900 flex flex-col justify-end translate-x-full transition-transform duration-700 transform z-50">
     <button onclick="accessMenu()"><i class="fa-solid fa-xmark absolute right-6 top-4 text-gray-300 border-0 rounded-full px-3.5 py-2.5 hover:bg-purple-500 hover:text-white transition-transform duration-300"></i></button>
-    <button><h1 class="py-5 text-xl font-bold text-gray-300 hover:scale-105 transition-transform duration-300 transform w-max pl-10">LATEST MOVIES</h1></button>
-    <button><h1 class="py-6 text-xl font-bold text-gray-300 hover:scale-105 transition-transform duration-300 transform w-max pl-10">UPCOMING MOVIES</h1></button>
-    <button><h1 class="py-6 text-xl font-bold text-gray-300 hover:scale-105 transition-transform duration-300 transform w-max pl-10">ALL TIME TOP-RATED</h1></button>
-    <button><h1 class="py-6 text-xl font-bold text-gray-300 hover:scale-105 transition-transform duration-300 transform w-max pl-10">WATCHLIST</h1></button>
+    <button onclick="latest()"><h1 class="py-5 text-xl font-bold text-gray-300 hover:scale-105 transition-transform duration-300 transform w-max pl-10">LATEST MOVIES</h1></button>
+    <button onclick="upcoming()"><h1 class="py-6 text-xl font-bold text-gray-300 hover:scale-105 transition-transform duration-300 transform w-max pl-10">UPCOMING MOVIES</h1></button>
+    <button onclick="toprate()"><h1 class="py-6 text-xl font-bold text-gray-300 hover:scale-105 transition-transform duration-300 transform w-max pl-10">ALL TIME TOP-RATED</h1></button>
+    <button><a href="watchlist.html"><h1 class="py-6 text-xl font-bold text-gray-300 hover:scale-105 transition-transform duration-300 transform w-max pl-10">WATCHLIST</h1></a></button>
   </div>
   <div id="text" class="text-2xl mx-20 font-bold text-white my-14 w-100">
     <p></p>
+  </div>
+  <div class="" id="font0">
+    <div>
+      <h1 class="text-5xl mx-16 font-bold text-white my-10">All time Popular</h1>
+    </div>
+    <div>
+      <h1 class="text-3xl mx-20 font-bold text-white my-14">Movies</h1>
+    </div>
+    <main class="flex mx-16 flex-wrap" id="zero">
+    </main>
   </div>
   <div class="" id="font">
     <div>
@@ -50,10 +60,9 @@
     <div>
       <h1 class="text-3xl mx-20 font-bold text-white my-14">Movies</h1>
     </div>
+    <main class="flex mx-16 flex-wrap" id="one">
+    </main>
   </div>
-  <main class="flex mx-16 flex-wrap" id="one">
-  </main>
-    
   <div class="" id="font3">
     <div>
       <h1 class="text-5xl mx-16 font-bold text-white my-10">Now Playing</h1>
@@ -83,8 +92,8 @@
         <p id="modaldesc" class="text-gray-100 m-6 text-sm">Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus explicabo natus adipisci quam sequi. Unde dolorem perspiciatis distinctio ab nostrum modi. Eum natus iusto maxime.</p>
         <p class="font-bold text-2xl flex top-1/2 text-white ml-6">Subscribe to watch</p>
         <div class="flex ml-6 mt-3 gap-4">
-            <button class="border-0 bg-gray-100 hover:bg-blue-300 rounded-3xl py-2 px-3 text-blue-600 font-semibold">₹850.00 HD</button>
-            <button class="border-0 bg-gray-100 hover:bg-blue-300 rounded-3xl py-2 px-3 text-blue-600 font-semibold">₹650.00 SD</button>
+            <button class="border-0 bg-gray-100 hover:bg-blue-300 rounded-3xl py-2 px-3 text-blue-600 font-semibold">₹320.00 HD</button>
+            <button class="border-0 bg-gray-100 hover:bg-blue-300 rounded-3xl py-2 px-3 text-blue-600 font-semibold">₹280.00 SD</button>
         </div>
         </div>
         </div>
