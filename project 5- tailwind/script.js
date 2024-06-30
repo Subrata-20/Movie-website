@@ -3,14 +3,19 @@ const searchbtn = document.querySelector("#searchbar button");
 const watchlist = document.querySelector('#watchlist');
 const mainContainer = document.querySelector("#one");
 const modallist = document.getElementById("watchlistmodal");
+const mainCon = document.querySelector("#zero");
 const url = "https://api.themoviedb.org/3/movie/";
 const apikey = "?api_key=4c5b0e6e762ef498e58fa64de2f01752";
 mainContainer.innerHTML = '';
 
-async function moviedata(context, container) {
-  const resp = await fetch(url + context + apikey);
-  const data = await resp.json();
-  cardisto(data.results, data.results.length, container);
+async function moviedata(context, container, pages = 1) {
+  let allResults = [];
+  for (let page = 1; page <= pages; page++) {
+    const resp = await fetch(`${url}${context}${apikey}&page=${page}`);
+    const data = await resp.json();
+    allResults = allResults.concat(data.results);
+  }
+  cardisto(allResults, allResults.length, container);
 }
 
 function cardisto(result, length, container) {
@@ -95,12 +100,16 @@ function cardisto(result, length, container) {
 }
 
 async function searchdata(search) {
-  const resp = await fetch(`https://api.themoviedb.org/3/search/movie?api_key=4c5b0e6e762ef498e58fa64de2f01752&query=${search}`);
-  const data = await resp.json();
-  console.log(data);
-  console.log(data.results.length);
-  mainContainer.innerHTML = ''; // Clear previous content inside the card container
-  cardisto(data.results, data.results.length, mainContainer);
+  mainCon.innerHTML = '';
+  let allResults = [];
+  for(let i = 1; i <= 2; i++){
+    const resp = await fetch(`https://api.themoviedb.org/3/search/movie?api_key=4c5b0e6e762ef498e58fa64de2f01752&query=${search}&page=${i}`);
+    const data = await resp.json();
+    allResults = allResults.concat(data.results);
+    console.log(data);
+    console.log(allResults.length);
+  }
+  cardisto(allResults, allResults.length, mainCon);
 }
 
 searchbtn.addEventListener('click', () => {
@@ -111,15 +120,51 @@ searchbtn.addEventListener('click', () => {
   document.querySelector("#text").innerHTML = ("Search results for " + '"' + searchbox.value + '"');
 });
 
+
+mainCon.innerHTML = '';
+
 const mainCont = document.querySelector("#two");
 mainCont.innerHTML = '';
 
 const mainContent = document.querySelector("#three");
 mainContent.innerHTML = '';
-
-moviedata("top_rated", mainContainer);
-moviedata("now_playing", mainContent);
-moviedata("upcoming", mainCont);
+moviedata("popular", mainCon, 2);
+document.querySelector("#font").style.display = "none";
+document.querySelector("#font2").style.display = "none";
+document.querySelector("#font3").style.display = "none";
+function toprate(){
+mainContainer.innerHTML = '';
+mainCont.innerHTML = '';
+mainContent.innerHTML = '';
+mainCon.innerHTML = '';
+moviedata("top_rated", mainContainer, 2);
+document.querySelector("#font").style.display = "block";
+document.querySelector("#font0").style.display = "none";
+document.querySelector("#font2").style.display = "none";
+document.querySelector("#font3").style.display = "none";
+}
+function latest(){
+mainContainer.innerHTML = '';
+mainCont.innerHTML = '';
+mainContent.innerHTML = '';
+mainCon.innerHTML = '';
+moviedata("now_playing", mainContent, 2);
+document.querySelector("#font3").style.display = "block";
+document.querySelector("#font").style.display = "none";
+document.querySelector("#font0").style.display = "none";
+document.querySelector("#font2").style.display = "none";
+}
+ function upcoming(){
+mainContainer.innerHTML = '';
+mainCont.innerHTML = '';
+mainContent.innerHTML = '';
+mainCon.innerHTML = '';
+moviedata("upcoming", mainCont, 2);
+document.querySelector("#font2").style.display = "block";
+document.querySelector("#font").style.display = "none";
+document.querySelector("#font0").style.display = "none";
+document.querySelector("#font3").style.display = "none"; 
+}
 
 function handleMenu() {
   console.log("first");
