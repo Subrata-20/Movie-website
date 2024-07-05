@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Tailwind Project</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"/>
+  <link href="output.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+</head>
+<style>
+  .show:hover .overview{
+      transform: translateY(0);
+  }
+</style>
+<body class= "bg-gradient-to-br from-purple-900 via-purple-500 to-pink-600 min-h-screen max-h-max w-screen overflow-x-hidden">
+  <nav class="p-6 flex bg-purple-950 justify-between items-center">
+    <a href="index.html" class="flex gap-2 items-center">
+      <img src="movix-high-resolution-logo-transparent.png" alt="Logo" class="object-cover invert" style="height: 44px; width: 160px;">
+    </a>
+    <div id="searchbar" class="relative flex items-center">
+      <input type="text" placeholder="What are you looking for..." class="flex-1 px-4 py-2 border border-gray-300 rounded-l-md focus:outline-none focus:border-yellow-300 w-96">
+      <button type="submit" class="absolute inset-y-0 -right-12 px-4 bg-gray-300 border border-gray-300 rounded-r-md flex items-center justify-center hover:bg-gray-400 transition duration-300">
+        <i class="fas fa-search text-gray-600"></i>
+      </button>
+    </div>
+    <div id="navmenu" class="flex">
+      <a href="watchlist.html" class="hidden md:flex m-4 font-medium text-xl text-white px-2 py-1 hover:scale-110 transition-transform duration-300 transform">Watchlist</a>
+      <a href="login.html" class="hidden md:flex m-4 font-medium text-xl text-white px-2 py-1 hover:scale-110 transition-transform duration-300 transform">Sign Up</a>
+      <!-- <a href="#" class="hidden md:flex m-4 font-medium text-xl text-white hover:border-2 border-transparent rounded px-2 py-1 hover:border-purple-400 hover:bg-purple-400 hover:scale-110 transition-transform duration-300 transform">Login</a> -->
+      <button class=" px-2 py-1 text-xl invert hover:scale-110 transition-transform duration-300 transform" onclick="handleMenu()">
+        <i class="fa-solid fa-bars text-white"></i>
+      </button>
+    </div>
+  </nav>
+  <div class="menubar absolute right-0 top-0 border-0 h-max w-96 bg-purple-900 flex flex-col justify-end translate-x-full transition-transform duration-700 transform z-50">
+    <button onclick="accessMenu()"><i class="fa-solid fa-xmark absolute right-6 top-4 text-gray-300 border-0 rounded-full px-3.5 py-2.5 hover:bg-purple-500 hover:text-white transition-transform duration-300"></i></button>
+    <button onclick="latest()"><h1 class="py-5 text-xl font-bold text-gray-300 hover:scale-105 transition-transform duration-300 transform w-max pl-10">LATEST MOVIES</h1></button>
+    <button onclick="upcoming()"><h1 class="py-6 text-xl font-bold text-gray-300 hover:scale-105 transition-transform duration-300 transform w-max pl-10">UPCOMING MOVIES</h1></button>
+    <button onclick="toprate()"><h1 class="py-6 text-xl font-bold text-gray-300 hover:scale-105 transition-transform duration-300 transform w-max pl-10">ALL TIME TOP-RATED</h1></button>
+    <button><a href="watchlist.html"><h1 class="py-6 text-xl font-bold text-gray-300 hover:scale-105 transition-transform duration-300 transform w-max pl-10">WATCHLIST</h1></a></button>
+  </div>
+  <div id="text" class="text-2xl mx-20 font-bold text-white my-14 w-100">
+    <p></p>
+  </div>
+  <div class="" id="font0">
+    <div>
+      <h1 class="text-5xl mx-16 font-bold text-white my-10">All time Popular</h1>
+    </div>
+    <div>
+      <h1 class="text-3xl mx-20 font-bold text-white my-14">Movies</h1>
+    </div>
+  </div>
+  <main class="flex mx-16 flex-wrap" id="zero">
+  </main>
+  <div class="" id="font">
+    <div>
+      <h1 class="text-5xl mx-16 font-bold text-white my-10">All time Top-Rated</h1>
+    </div>
+    <div>
+      <h1 class="text-3xl mx-20 font-bold text-white my-14">Movies</h1>
+    </div>
+    <main class="flex mx-16 flex-wrap" id="one">
+    </main>
+  </div>
+  <div class="" id="font3">
+    <div>
+      <h1 class="text-5xl mx-16 font-bold text-white my-10">Now Playing</h1>
+    </div>
+    <div>
+      <h1 class="text-3xl mx-20 font-bold text-white my-14">Movies</h1>
+    </div>
+    <main class="flex mx-16 flex-wrap" id="three">
+    </main>
+  </div>
+  <div class="" id="font2">
+    <div>
+      <h1 class="text-5xl mx-16 font-bold text-white my-10">Upcoming Releases</h1>
+    </div>
+    <div>
+      <h1 class="text-3xl mx-20 font-bold text-white my-14">Movies</h1>
+    </div>
+    <main class="flex mx-16 flex-wrap" id="two">
+    </main>
+  </div>
+  <div id="modal" class="fixed hidden justify-center inset-0 bg-black bg-opacity-70 items-center min-h-screen max-h-max z-50">
+    <div class="bg-purple-400 rounded-xl w-2/5">
+        <button onclick="closeModal()" class="fixed justify-center text-4xl -mt-1.5 py-1 px-1.5 top-24 left-2/3 text-white hover:scale-110 transition-transform duration-300 transform">&times;</button>
+        <div class="flex">
+        <img src="guli.jpg" class="h-80 mt-6 ml-8 rounded-xl shadow-md" id="modalimg">
+        <div class="flex-col">
+        <p id="modaldesc" class="text-gray-100 m-6 text-sm">Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus explicabo natus adipisci quam sequi. Unde dolorem perspiciatis distinctio ab nostrum modi. Eum natus iusto maxime.</p>
+        <p class="font-bold text-2xl flex top-1/2 text-white ml-6">Subscribe to watch</p>
+        <div class="flex ml-6 mt-3 gap-4">
+            <button class="border-0 bg-gray-100 hover:bg-blue-300 rounded-3xl py-2 px-3 text-blue-600 font-semibold">₹320.00 HD</button>
+            <button class="border-0 bg-gray-100 hover:bg-blue-300 rounded-3xl py-2 px-3 text-blue-600 font-semibold">₹280.00 SD</button>
+        </div>
+        </div>
+        </div>
+        <h1 id="namemodal" class="ml-9 text-white font-semibold mt-3">Name</h1>
+        <div class="flex mx-6 my-3">
+        <button class="flex mx-auto mt-2 border-0 w-max pt-2 pb-0.5 px-24 mb-2 rounded-lg bg-purple-300 text-blue-700 hover:text-white hover:bg-purple-500 transition-transform duration-300">
+            <i class="fa-solid fa-play my-1.5 mr-2"></i>
+            <p class="text-lg font-semibold mb-1">Play</p>
+        </button>
+        <button id="watchlistmodal" class="flex mx-auto mt-2 border-0 w-max pt-1.5 pb-0.5 px-20 mb-2 rounded-lg bg-purple-300 text-blue-700 hover:text-white hover:bg-purple-500 transition-transform duration-300">
+            <i class="fa-regular fa-bookmark my-2 mr-2"></i>
+            <p class="text-xl font-semibold">Watchlist</p>
+        </button>
+        </div>
+    </div>
+  </div>
+  <!-- footer -->
+  <footer class="relative bg-gray-800 pt-8 pb-6 mt-24">
+    <div class="container mx-auto px-4">
+      <div class="flex flex-wrap text-left lg:text-left">
+        <div class="w-full lg:w-6/12 px-4">
+          <h4 class="text-3xl fonat-semibold text-red-600 pb-2">There's even more to explore!</h4>
+          <h5 class="text-lg mt-0 mb-2 text-gray-200">
+            Welcome to Movix, your ultimate destination for all things movies! Discover detailed information on the latest blockbusters, timeless classics, and hidden gems.
+          </h5>
+          <div class="mt-6 lg:mb-0 mb-6">
+            <button class="bg-white text-blue-400 shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2">
+              <i class="fa-brands fa-twitter"></i></button>
+            <button class="bg-white text-blue-600 shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2">
+              <i class="fa-brands fa-facebook"></i></i></button>
+            <button class="bg-white text-pink-500 shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2">
+              <i class="fa-brands fa-instagram"></i></button>
+            <button class="bg-white text-gray-800 shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2">
+              <i class="fab fa-github"></i>
+            </button>
+          </div>
+        </div>
+        <div class="w-full lg:w-6/12 px-4">
+          <div class="flex flex-wrap items-top mb-6">
+            <div class="w-full lg:w-4/12 px-4 ml-auto">
+              <span class="block uppercase text-gray-200 text-sm font-semibold mb-2">Useful Links</span>
+              <ul class="list-unstyled">
+                <li>
+                  <a class="text-gray-200 hover:text-gray-400 font-semibold block pb-2 text-sm" href="#About Us">About Us</a>
+                </li>
+                <li>
+                  <a class="text-gray-200 hover:text-gray-400 font-semibold block pb-2 text-sm" href="https://github.com/Subrata-20/Movie-website">Github</a>
+                </li>
+              </ul>
+            </div>
+            <div class="w-full lg:w-4/12 px-4">
+              <span class="block uppercase text-gray-200 text-sm font-semibold mb-2">Other Resources</span>
+              <ul class="list">
+                <li>
+                  <a class="text-gray-200 hover:text-gray-400 font-semibold block pb-2 text-sm" href="#conditions">Terms &amp; Conditions</a>
+                </li>
+                <li>
+                  <a class="text-gray-200 hover:text-gray-400 font-semibold block pb-2 text-sm" href="#privacy">Privacy Policy</a>
+                </li>
+                <li>
+                  <a class="text-gray-200 hover:text-gray-400 font-semibold block pb-2 text-sm" href="#contact_us">Contact Us</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <hr class="my-6 border-gray-300 mx-auto">
+      <div class="flex flex-wrap items-center md:justify-between justify-center">
+        <div class="w-full md:w-4/12 px-4 mx-auto text-center">
+          <div class="text-sm text-gray-400 font-semibold py-1">
+            Copyright © 2024<a href="index.html" class="text-gray-400 hover:text-gray-300"> Movix by
+            <a href="https://github.com/Subrata-20" class="text-gray-400 hover:text-gray-300">Subrata</a>.
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>
+
+
