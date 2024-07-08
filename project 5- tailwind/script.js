@@ -15,6 +15,9 @@ async function moviedata(context, container, pages = 1) {
     const data = await resp.json();
     allResults = allResults.concat(data.results);
   }
+  
+  document.getElementById('loading-spinner').classList.add('hidden');
+
   cardisto(allResults, allResults.length, container);
 }
 
@@ -129,7 +132,7 @@ mainCont.innerHTML = '';
 
 const mainContent = document.querySelector("#three");
 mainContent.innerHTML = '';
-moviedata("popular", mainCon, 3);
+moviedata("popular", mainCon, 2);
 document.querySelector("#font").style.display = "none";
 document.querySelector("#font2").style.display = "none";
 document.querySelector("#font3").style.display = "none";
@@ -138,7 +141,7 @@ mainContainer.innerHTML = '';
 mainCont.innerHTML = '';
 mainContent.innerHTML = '';
 mainCon.innerHTML = '';
-moviedata("top_rated", mainContainer, 3);
+moviedata("top_rated", mainContainer, 2);
 document.querySelector("#font").style.display = "block";
 document.querySelector("#font0").style.display = "none";
 document.querySelector("#font2").style.display = "none";
@@ -149,7 +152,7 @@ mainContainer.innerHTML = '';
 mainCont.innerHTML = '';
 mainContent.innerHTML = '';
 mainCon.innerHTML = '';
-moviedata("now_playing", mainContent, 3);
+moviedata("now_playing", mainContent, 2);
 document.querySelector("#font3").style.display = "block";
 document.querySelector("#font").style.display = "none";
 document.querySelector("#font0").style.display = "none";
@@ -160,7 +163,7 @@ mainContainer.innerHTML = '';
 mainCont.innerHTML = '';
 mainContent.innerHTML = '';
 mainCon.innerHTML = '';
-moviedata("upcoming", mainCont, 3);
+moviedata("upcoming", mainCont, 2);
 document.querySelector("#font2").style.display = "block";
 document.querySelector("#font").style.display = "none";
 document.querySelector("#font0").style.display = "none";
