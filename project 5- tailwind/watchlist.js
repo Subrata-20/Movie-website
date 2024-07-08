@@ -16,22 +16,22 @@ function addMovieToWatchlistPage() {
         let released = watchMoviesArray[i].date;
         let description = watchMoviesArray[i].description;
         let movieCard = document.createElement('div');
-        movieCard.classList.add('movie-card', 'border', 'shadow-md', 'bg-purple-400', 'max-w-screen-lg', 'rounded-md', 'mx-auto', 'my-4', 'hover:scale-105', 'transition-transform', 'duration-300', 'transform');
+        movieCard.classList.add('movie-card', 'border', 'shadow-md', 'bg-purple-400', 'max-w-screen-lg', 'rounded-md', 'mx-auto', 'my-4', 'md:hover:scale-105', 'transition-transform', 'duration-300', 'transform');
         movieCard.innerHTML = 
         `<div>
         <div class="flex">   
-                <img class="poster rounded-sm h-40 m-3" src="${poster}">
+                <img class="poster rounded-sm h-28 md:h-40 m-3" src="${poster}">
                 <i class="fa-solid fa-xmark text-sm text-gray-200 absolute top-4 right-6 cursor-pointer border-0 rounded-full px-3.5 py-2 hover:bg-purple-300 hover:text-white transition-transform duration-300"></i>
                 <div>
-                    <h1 class="pt-14 ml-3 pb-2 text-white font-bold text-xl choco">${title}</h1>
-                    <p class="text-lg ml-3 text-gray-200">Released: ${released}</p>
+                    <h1 class="pt-6 md:pt-14 ml-3 pb-2 text-white font-bold text-base md:text-xl choco">${title}</h1>
+                    <p class="text-sm md:text-lg ml-3 text-gray-200">Released: ${released}</p>
                     <div class="flex">
-                        <i class="fa-solid fa-star py-3 pl-3 pr-1.5 text-yellow-400"></i>
-                        <p class="text-lg mt-1.5 text-gray-200">${rating}</p>
+                        <i class="fa-solid fa-star py-2 md:py-3 pl-3 pr-1.5 text-yellow-400"></i>
+                        <p class="text-sm md:text-lg mt-1.5 text-gray-200">${rating}</p>
                     </div>
                 </div>
             </div>
-            <p class="text-base pb-4 ml-3 text-gray-100 pr-2">
+            <p class=" text-xs md:text-base pb-4 ml-3 text-gray-100 pr-2">
                ${description}
             </p> </div>
         `;
