@@ -47,7 +47,8 @@ wrapper.addEventListener('click', (e)=>{
         const index = e.target.parentElement.parentElement.parentElement.dataset.index; // Get the index from the data attribute
         watchMoviesArray.splice(index, 1);
         localStorage.setItem('watchMoviesArray', JSON.stringify(watchMoviesArray));
-
         e.target.parentElement.parentElement.parentElement.remove();
+
+        location.reload();
     }
 })
