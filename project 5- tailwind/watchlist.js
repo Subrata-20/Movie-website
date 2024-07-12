@@ -7,6 +7,7 @@ console.log('Watchlist Movies:', watchMoviesArray);
 function addMovieToWatchlistPage() {
     if (watchMoviesArray.length === 0) {
         console.log('No movies in the watchlist.');
+        wrapper.innerHTML = `<h1 class="text-2xl text-white font-semibold my-20">There are no movies in your watchlist.</h1>`
         return;
     }
     for (let i = 0; i < watchMoviesArray.length; i++) {
