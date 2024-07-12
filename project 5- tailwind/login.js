@@ -24,7 +24,7 @@ function signup() {
 }
 
 let sign = document.querySelector(".sign");
-sign.addEventListener('click', (e) => {
+sign.addEventListener('submit', (e) => {
     e.preventDefault();
     let enter1 = document.querySelector(".enter1").value;
     let enter2 = document.querySelector(".enter2").value;
@@ -49,7 +49,7 @@ sign.addEventListener('click', (e) => {
         document.querySelector(".frgt").classList.add('flex');
         alert("You have signed up successfully!");
 
-        document.querySelector(".continue").addEventListener('click', (e) => {
+        document.querySelector(".continue").addEventListener('submit', (e) => {
             e.preventDefault();
             let enter3 = document.querySelector(".enter3").value;
             let enter4 = document.querySelector(".enter4").value;
