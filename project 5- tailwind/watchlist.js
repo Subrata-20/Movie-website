@@ -49,6 +49,10 @@ wrapper.addEventListener('click', (e)=>{
         localStorage.setItem('watchMoviesArray', JSON.stringify(watchMoviesArray));
         e.target.parentElement.parentElement.parentElement.remove();
 
-        location.reload();
+        if (watchMoviesArray.length === 0) {
+            console.log('No movies in the watchlist.');
+            wrapper.innerHTML = `<h1 class="text-2xl text-white font-semibold my-20">There are no movies in your watchlist.</h1>`
+            return;
+        }
     }
 })
